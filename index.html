@@ -3,51 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thảo Đồ Si - Zalo</title>
+  <title>Thảo Đồ Si - Chat Zalo</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      background: #fdfdfd;
       text-align: center;
       padding: 40px 20px;
-      background: #f5f5f5;
     }
     img {
-      max-width: 180px;
+      width: 160px;
       border-radius: 50%;
       margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     h1 {
-      font-size: 28px;
-      color: #333;
+      font-size: 26px;
       margin-bottom: 10px;
+      color: #222;
     }
     p {
       font-size: 16px;
-      color: #666;
+      color: #555;
       margin-bottom: 20px;
     }
     .btn {
       background-color: #0068ff;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 22px;
       border: none;
       border-radius: 8px;
       font-size: 16px;
-      cursor: pointer;
+      font-weight: bold;
       text-decoration: none;
       display: inline-block;
+    }
+    #tiktok-warning {
+      display: none;
     }
   </style>
   <script>
     function isTikTokBrowser() {
-      return navigator.userAgent.toLowerCase().includes('tiktok');
+      return navigator.userAgent.toLowerCase().includes("tiktok");
     }
 
     window.onload = function () {
+      const warning = document.getElementById("tiktok-warning");
+      const normal = document.getElementById("normal-redirect");
+
       if (isTikTokBrowser()) {
-        document.getElementById('tiktok-warning').style.display = 'block';
-        document.getElementById('normal-redirect').style.display = 'none';
+        warning.style.display = "block";
+        normal.style.display = "none";
       } else {
+        warning.style.display = "none";
+        normal.style.display = "block";
         setTimeout(() => {
           window.location.href = "https://zalo.me/0382586289";
         }, 5000);
@@ -59,13 +68,16 @@
   <img src="https://cdn.beacons.ai/user_content/BYWg8MSArHQEpgtsOC35bog76UE3/profile_thaodosi8.png?q=1744954012.0386598" alt="Thảo Đồ Si" />
   <h1>Thảo Đồ Si</h1>
 
+  <!-- Hiển thị nếu không dùng TikTok -->
   <div id="normal-redirect">
-    <p>Đang chuyển sang Zalo...<br/>Nếu không chuyển, <a href="https://zalo.me/0382586289">bấm vào đây</a>.</p>
+    <p>Đang chuyển đến Zalo...<br/>Nếu không thấy gì, <a href="https://zalo.me/0382586289">bấm vào đây</a>.</p>
   </div>
 
-  <div id="tiktok-warning" style="display: none;">
-    <p>🔒 Trình duyệt TikTok không hỗ trợ mở Zalo.<br/>Vui lòng mở trang này bằng Chrome, Safari hoặc trình duyệt ngoài để kết nối Zalo.</p>
-    <a class="btn" href="https://zalo.me/0382586289" target="_blank">Mở trong trình duyệt</a>
+  <!-- Hiển thị nếu đang trong trình duyệt TikTok -->
+  <div id="tiktok-warning">
+    <p>📱 Bạn đang dùng TikTok, trình duyệt này không mở được Zalo.</p>
+    <p>Vui lòng mở trang này bằng Chrome, Safari hoặc trình duyệt mặc định trên điện thoại.</p>
+    <a class="btn" href="https://www.google.com/url?q=https://zalo.me/0382586289" target="_blank">Mở trong trình duyệt</a>
   </div>
 </body>
 </html>
